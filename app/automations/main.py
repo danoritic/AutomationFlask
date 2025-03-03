@@ -16,6 +16,7 @@ import json
 from chrome_extension_python import Extension
 from app.automations.comments import comment_on_some_tasks
 from app import data_manager as dm
+from config import Config
 
 # ------------------------------
 # Basic user agents for stealth
@@ -90,7 +91,7 @@ def init_driver(headless=False):
         
     # Load the captcha solver extension (this extension will handle reCAPTCHA automatically)
     chrome_options.add_argument(
-        Capsolver("CAP-F79C6D0E7A810348A201783E25287C6003CFB45BBDCB670F96E525E7C0132148").load()
+        Capsolver(Config.CAPSOLVER_API_KEY).load()
     )
 
     # Install chromedriver if not present
