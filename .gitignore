@@ -63,3 +63,4 @@ app/static/uploads/*
 # Logs
 logs/
 *.log 
+.vercel
