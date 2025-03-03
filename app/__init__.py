@@ -17,4 +17,6 @@ def create_app(config_name='default'):
     def inject_now():
         return {'now': datetime.utcnow()}
     
-    return app 
+    return app
+
+# app= create_app
