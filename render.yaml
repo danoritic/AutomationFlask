@@ -1,4 +1,3 @@
-
 # Render.yaml configuration for Airtasker Bot Manager
 
 services:
@@ -16,14 +15,16 @@ services:
       apt-get update && apt-get install -y google-chrome-stable
       # Install Python dependencies
       pip install -r requirements.txt
-    preStartCommand: |
-      # Set up virtual display with Xvfb
-      Xvfb :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+    preDeployCommand: |
       # Create data directory if it doesn't exist
       mkdir -p /app/data/screenshots
       # Set file permissions
       chmod -R 777 /app/data
-    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 4 "run:app"
+    startCommand: |
+      # Set up virtual display with Xvfb
+      Xvfb :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+      # Start the Flask application with gunicorn
+      gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 4 "run:app"
     envVars:
       - key: FLASK_APP
         value: app
