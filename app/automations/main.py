@@ -371,13 +371,13 @@ def run_airtasker_bot(email, password, city_name="Sydney", max_posts=3, message_
 # Main execution
 # ------------------------------
 def main():
-    driver = init_driver(headless=False)  # False by default but explicitly set for clarity
+    driver = init_driver()
     driver.get("https://www.airtasker.com/")
     time.sleep(random.uniform(5, 8))
     try:
         # Credentials and login XPaths
-        email = "Donnahartspare2000@gmail.com"
-        password = "Cairns@2000"
+        email = "example@example.com"  # Replace with your email for testing
+        password = "your_password_here"  # Replace with your password for testing
         login_button_xpath = '//*[@id="airtasker-app"]/nav/div[2]/div/div/div/div[2]/a[2]'
         email_input_id = "username"
         password_input_id = "password"
