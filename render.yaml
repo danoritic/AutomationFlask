@@ -15,13 +15,10 @@ services:
       apt-get update && apt-get install -y google-chrome-stable
       # Install Python dependencies
       pip install -r requirements.txt
-    preDeployCommand: |
-      # Create data directory if it doesn't exist
-      mkdir -p /app/data/screenshots
-      # Set file permissions
-      chmod -R 777 /app/data
+      # Create data directories with appropriate permissions during build
+      mkdir -p data/screenshots
     startCommand: |
-      # Set up virtual display with Xvfb
+      # Start virtual display with Xvfb
       Xvfb :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
       # Start the Flask application with gunicorn
       gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 4 "run:app"
