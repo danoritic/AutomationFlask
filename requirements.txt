@@ -13,3 +13,5 @@ Pillow==10.2.0
 pyvirtualdisplay==3.0
 undetected-chromedriver==3.5.5
 webdriver-manager==4.0.1
+awscli
+awsebcli
